@@ -395,6 +395,156 @@ h2{
 </li>
 </ol>
 
+  <h2>Filters</h2>
+  <h3 id="filters">CSS FilterLab</h3>
+  <var>07_filters/map.html</var>
+
+<ol>
+<li>
+<pre><code class="language-css">
+@-webkit-keyframes mapfold{
+  0% {
+  -webkit-filter: ...
+  }
+  100% {
+  -webkit-filter: ...
+  }
+}
+</code></pre>
+</li>
+<li>
+<pre><code class="language-css">
+#map{
+  -webkit-animation-name: mapfold;
+  -webkit-animation-duration: 5s;
+}
+</code></pre>
+</li>
+</ol>
+
+
+  <h2>SVG</h2>
+  <h3 id="svg-image">SVG as a linked image</h3>
+  <var>08_svg/svg-image.html</var>
+
+<ol>
+<li>
+<pre><code class="language-markup">
+&lt;img src=&quot;resources/continents.svg&quot; width=&quot;400&quot; height=&quot;300&quot;/&gt;
+</code></pre>
+</li>
+
+<var>08_svg/svg-markup.html</var>
+
+<li>
+<pre><code class="language-css">
+/* replace &lt;img&gt; with SVG markup */
+</code></pre>
+</li>
+
+<li>
+<pre><code class="language-css">
+path{
+  fill: green;
+}
+</code></pre>
+</li>
+
+<li>
+<pre><code class="language-css">
+path.philippines{
+  fill: red;
+}
+</code></pre>
+</li>
+
+<var>08_svg/svg-draw.html</var>
+
+<li>
+<pre><code class="language-css">
+&lt;circle cx=&quot;380&quot; cy=&quot;110&quot; r=&quot;7&quot; id=&quot;dot&quot; /&gt;
+</code></pre>
+</li>
+
+<li>
+<pre><code class="language-css">
+#dot{
+  fill: red;
+}
+</code></pre>
+</li>
+
+<var>08_svg/svg-animation.html</var>
+<li>
+<pre><code class="language-css">
+@-webkit-keyframes you-are-here{
+  50%{
+  -webkit-transform: scale(1.8);
+  }
+}
+
+#dot{
+  fill: red;
+  -webkit-animation: you-are-here 1s infinite ease-in-out;
+  -webkit-transform-origin: center center;
+  cursor: pointer;
+}
+</code></pre>
+</li>
+
+<li>
+<pre><code class="language-css">
+@-webkit-keyframes continents-move{
+  0% {
+    -webkit-transform: scale(0.5);
+    -webkit-transform-origin: right top;
+  }
+  100%{
+    -webkit-transform: scale(1);
+    -webkit-transform-origin: left bottom;
+  }
+}
+
+path{
+  fill: green;
+  -webkit-animation: continents-move 2s 1 ease-out;
+  -webkit-animation-fill-mode: forwards;
+}
+</code></pre>
+</li>
+
+<var><span class="key">&#9733; optional</span> 08_svg/svg-zoom.html</var>
+
+
+<li>
+<pre><code class="language-javascript">
+var point = document.querySelector('#dot')
+var mapContainer = document.querySelector("#map-container")
+
+point.addEventListener('click', function(e){
+  mapContainer.classList.toggle('zoom')
+})
+</code></pre>
+</li>
+
+<li>
+<pre><code class="language-css">
+svg{
+  -webkit-transition: all 1s ease-out;
+  -webkit-transform-origin: right 50%;
+}
+
+.zoom svg{
+  -webkit-transform: scale(3);
+}
+.zoom #dot{
+  -webkit-animation: none;
+  -webkit-transform: scale(0.3);
+}
+</code></pre>
+</li>
+
+</ol>
   
   </article>
   <script type="text/javascript" src="prism/prism.js"></script>
