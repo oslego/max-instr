@@ -3,9 +3,400 @@
 <head>
   <title></title>
   <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" href="prism/prism.js" media="all" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" media="all" />
+  <link rel="stylesheet" type="text/css" href="prism/prism.css" media="all" />
+  <meta name="viewport" content="width=device-width">
+  
 </head>
 <body>
+  <article>
+    <h2>CSS Layout</h2>
+
+<!-- BOX model -->
+    <h3 id="box-model">Box Model</h3>
+    <var>01_layout/box-model.html</var>
+    <ol>
+      <li>
+<pre><code class="language-css">
+.box{
+  width: 450px;
+  padding: 30px;
+  margin: 50px;
+  border: 20px solid black;
+  background-color: white;
+}
+</code></pre>
+      </li>
+    </ol>
+
+    <h3 id="float">Float and box-sizing</h3>
+    <var>01_layout/float-box-sizing.html</var>
+    <ol>
+      <li>
+<pre><code class="language-css">
+.column{
+  /* ... */
+  width: 50%;
+  float: left;
+}
+</code></pre>
+      </li>
+      <li>
+<pre><code class="language-css">
+.container{
+  /* ... */
+  overflow: auto;
+}
+</code></pre>
+      </li>
+      <li>
+<pre><code class="language-css">
+.column{
+  border: 5px solid black;
+  padding: 20px;
+  box-sizing: border-box;
+}
+</code></pre>
+      </li>
+    </ol>
+
+    <h3 id="border-radius"><span class="key">&#9733;</span>Border-radius</h3>
+    <var>01_layout/border-radius.html</var>
+    <ol>
+      <li>
+<pre><code class="language-css">
+.rounded{
+  border-radius: 50px;
+}
+</code></pre>
+      </li>
+    </ol>
+
+    <h3 id="flexbox">Flexbox</h3>
+    <var>01_layout/flexbox.html</var>
+    <ol>
+      <li>
+<pre><code class="language-css">
+nav {
+  display: -webkit-flex;
+  -webkit-flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -webkit-justify-content: center;
+  -webkit-align-items: center;
+}
+</code></pre>
+      </li>
+
+      <li>
+<pre><code class="language-css">
+nav a {
+  -webkit-flex-grow: 1;
+  min-width: 100px;
+}
+</code></pre>
+      </li>
+<p class="divider">Part 2</p>
+      <li>
+<pre><code class="language-css">
+.flex-container{
+  display: -webkit-flex;
+  -webkit-flex-direction: row;
+  -webkit-flex-wrap: wrap;
+}
+
+.flex-item{
+  -webkit-flex-grow: 1;
+  width: 200px;
+}
+</code></pre>
+      </li>
+      
+<p class="divider">Part 3</p>
+      <li>
+<pre><code class="language-markup">
+&lt;div class=&quot;flex-item&quot; id=&quot;feature&quot;&gt;
+</code></pre>
+      </li>
+      
+      <li>
+<pre><code class="language-css">
+#feature{
+  background: pink;
+  -webkit-order: -1;
+  -webkit-flex-basis: 100%;
+}
+</code></pre>
+      </li> 
+    </ol>
+    
+    <h2>Gradients</h2>
+
+    <h3 id="linear-gradient"><span class="key">&#9733;</span>Linear gradient</h3>
+    <var>03_gradients/linear-gradient.html</var>
+    <ol>
+      <li>
+<pre><code class="language-css">
+.button{
+  background-image:
+    -webkit-linear-gradient(bottom, lightgray, white)
+}
+
+.cocktail-card{
+  background-image:
+    -webkit-linear-gradient(45deg, green, yellow)
+}
+</code></pre>
+      </li>
+    </ol>
+
+    <h3 id="radial-gradient"><span class="key">&#9733;</span>Radial gradient</h3>
+    <var>03_gradients/radial-gradient.html</var>
+    <ol>
+      <li>
+<pre><code class="language-css">
+.card{
+  /* ... */
+  background-image: 
+    -webkit-radial-gradient(
+      center top, 
+      circle,
+      #A763A7, #000000);
+}
+</code></pre>
+      </li>
+    </ol> 
+    
+    <h2>Shadows</h2>
+
+    <h3 id="box-text-shadow"><span class="key">&#9733;</span>Box and text shadows</h3>
+    <var>04_shadows/shadows.html</var>
+
+    <h3 id="buttons">Realistic buttons</h3>
+    <var>04_shadows/buttons.html</var>
+    
+    <ol>
+      <li>
+<pre><code class="language-css">
+nav a{
+  background: #B54F5D 
+    -webkit-linear-gradient(top, #e791a0, #B54F5D);
+    
+  text-shadow: 0px 2px 1px #853a3b;
+  
+  /* 2 shadows, inset */
+  box-shadow: 
+    0px 4px 0px #853a3b, 
+    inset 0px 1px 1px white;
+}
+</code></pre>
+      </li>
+
+      <li>
+<pre><code class="language-css">
+nav a:hover{
+  background: #e791a0;
+}
+</code></pre>
+      </li>
+
+      <li>
+<pre><code class="language-css">
+nav a:active{
+  /* inset, pressed */
+  box-shadow: 
+    0px 1px 0px #853a3b, 
+    inset 0px 2px 7px #220303;
+    
+  background: #802D38 
+    -webkit-linear-gradient(top, #e791a0, #802D38);
+}
+</code></pre>
+      </li>
+      
+    </ol>
+
+    <h2>Transforms</h2>
+
+    <h3 id="transform-rotate"><span class="key">&#9733;</span>Rotating elements</h3>
+    <var>05_transforms/rotate.html</var>
+
+    <h3 id="transform-skew"><span class="key">&#9733;</span>Optional: Skew transform</h3>
+    <var>05_transforms/skew.html</var>
+
+    <h3 id="transform-origin">Transform origin</h3>
+    <var>05_transforms/transform-origin.html</var>
+    
+    <ol>
+      <li>
+<pre><code class="language-css">
+.container {
+  -webkit-perspective: 900;
+}
+</code></pre>
+      </li>
+
+      <li>
+<pre><code class="language-css">
+#left {
+  -webkit-transform: rotateY(35deg);
+  -webkit-transform-origin: right center;
+}
+
+#right{
+  -webkit-transform: rotateY(-35deg);
+  -webkit-transform-origin: left center;
+}
+</code></pre>
+      </li>
+
+<p class="divider">Part 2</p>
+      <li>
+<pre><code class="language-css">
+.left-side{
+  background-image: 
+  -webkit-linear-gradient(left, transparent,
+  rgba(0, 0, 0, 0.1));
+}
+</code></pre>
+      </li>
+      
+    </ol>
+    
+    <h2>Transitions</h2>
+    <h3 id="transitions">Transitioning between property values</h3>
+    <var>06_transitions_animations/transitions.html</var>
+
+    <ol>
+      <li>
+<pre><code class="language-css">
+.menu li{
+  -webkit-transition: background 0.5s ease-out;
+}
+.menu li:hover{
+  background: #000000;
+}
+</code></pre>
+      </li>
+      
+<p class="divider">Part 2</p>
+
+      <li>
+<pre><code class="language-css">
+.menu li:hover{
+  background: #000000;
+  color: white;
+  width: 350px;
+  font-size: 2.5em;
+}
+</code></pre>
+      </li>
+    </ol>
+    
+    
+    <h3 id="transitions-3d">CSS Transitions on 3D Transforms</h3>
+    <var>06_transitions_animations/3d-transitions.html</var>
+ 
+<ol>
+<li>
+<pre><code class="language-css">
+#left, #right{
+  -webkit-transition:
+    -webkit-transform
+    0.5s 
+    ease-in-out;
+}
+
+.container:hover #left,
+.container:hover #right{
+  -webkit-transform: rotateY(0deg);
+}
+</code></pre>
+</li>
+</ol>
+
+  <h3 id="transitions-flip"><span class="key">&#9733;</span>Optional: Flip a card</h3>
+  <var>06_transitions_animations/flip.html</var>
+
+<ol>
+<li>
+<pre><code class="language-css">
+#back-side{
+  -webkit-transform: rotateY(180deg);
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+
+.side{
+  -webkit-backface-visibility: hidden;
+}
+
+.card{
+  -webkit-transition: -webkit-transform 1s ease-out;
+  -webkit-transform-style: preserve-3d;
+  position: relative;
+}
+/* flip on hover */
+.card:hover{
+  -webkit-transform: rotateY(180deg);
+}
+</code></pre>
+</li>
+</ol>
+ 
+  <h2>Animations</h2>
+  <h3 id="animations">CSS Animations</h3>
+  <var>06_transitions_animations/animations.html</var>
+
+<ol>
+<li>
+<pre><code class="language-css">
+@-webkit-keyframes heartbeat{
+  50%{
+    -webkit-transform: scale(1.2);
+  }
+}
+
+#heart{
+    /* explain shorthand, delay */
+-webkit-animation-name: heartbeat;
+-webkit-animation-duration: 0.5s;
+-webkit-animation-iteration-count: infinite;
+-webkit-animation-timing-function: ease-in-out;
+}
+</code></pre>
+</li>
+</ol>
+
+<p class="divider"><span class="key">&#9733;</span>Part 2 - Page 62</p>
+
+<ol>
+<li>
+<pre><code class="language-css">
+@-webkit-keyframes grow{
+  0%{
+    opacity: 0.0;
+  }
+  50%{
+    font-size: 100px;
+  }
+  100%{
+    opacity: 1.0;
+    font-size: 80px;
+  }
+}
+
+h2{
+  /* shorthand */
+  -webkit-animation: grow 0.5s 1s 1 ease-in-out;
+  -webkit-animation-fill-mode: forwards;
+}
+</code></pre>
+</li>
+</ol>
+
+  
+  </article>
   <script type="text/javascript" src="prism/prism.js"></script>
 </body>
 </html>

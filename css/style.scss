@@ -1,0 +1,67 @@
+@import 'normalize.css';
+
+body{
+  padding: 1em;
+  font-size: 150%;
+}
+
+h2{
+  color: red;
+  font-size: 2em;
+}
+
+h3{
+  font-size: 2em;
+  margin: 1em 0 0.3em;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+ol, li{
+  margin: 0;
+  padding: 0;
+}
+
+var{
+  background: black;
+  width: 100%;
+  display: block;
+  color: white;
+  padding: 1em;
+}
+
+.key{
+  color: gold;
+  padding-right: 0.2em;
+}
+
+.divider{
+  font-size: 1.3em;
+  border-bottom: 0.2em dashed red;
+}
+
+
+ol{
+  width: 100%;
+  list-style: none;
+  counter-reset: item;
+    li{
+      position: relative;
+      font-size: 1.2em;
+      &:before {
+        content: counter(item); 
+        counter-increment: item;
+        color: white;
+        position: absolute;
+        left: 5px;
+        top: 5px;
+        font-size: 1.3em;
+        background: green;
+        min-width: 1.2em;
+        height: 1.2em;
+        text-align: center;
+      }
+    } 
+}
