@@ -1,8 +1,10 @@
 @import 'normalize.css';
 
 body{
-  padding: 1em;
   font-size: 150%;
+}
+article{
+  padding: 1em;
 }
 
 h2{
@@ -64,4 +66,71 @@ ol{
         text-align: center;
       }
     } 
+}
+
+header{
+  position: fixed;
+  bottom: 0;
+  z-index: 2;
+  background: black;
+  width: 100%;
+}
+
+.menu-toggle {
+  position: relative;
+  background: yellow;
+  display: inline-block;
+  padding: 0.5em 1em;
+  margin: 1em;
+  
+  &:active{
+    background: red;
+  }
+}
+
+.menu{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: rgba(0,0,0,0.8);
+  font-size: 1.8em;
+  position: fixed;
+  z-index: 3;
+  width: 100%;
+  height: 90%;
+  top: 0;
+  -webkit-overflow-scrolling: touch;
+  overflow: auto;
+  -webkit-transition: -webkit-transform 0.2s ease-out;
+  -webkit-transform: translateX(-100%);
+  
+  &.open{
+    -webkit-transform: translateX(0);
+  }
+  
+  li{
+    margin: 0;
+    padding: 0;
+  }
+  
+  a{
+    display: block;
+    color: white;
+    padding: 0.3em 0.7em;
+    border-bottom: 1px solid white;
+    text-decoration: none;
+    
+    &.level2{
+      color: yellow;
+      padding-left: 1.5em;
+    }
+
+    &.level1{
+      background: gray;
+    }
+    
+    &:active{
+      background: red;
+    }
+  }
 }
