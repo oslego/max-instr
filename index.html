@@ -545,6 +545,171 @@ svg{
 </li>
 
 </ol>
+
+
+  <h2>Canvas</h2>
+  <h3 id="svg-image">Canvas Pie chart</h3>
+  <var>09_canvas/canvas-piechart.html</var>
+
+<ol>
+<li>
+<pre><code class="language-markup">
+&lt;canvas id=&quot;canvas&quot; width=&quot;600&quot; height=&quot;400&quot;&gt;&lt;/canvas&gt;
+
+/* load EaselJS */
+&lt;script type=&quot;text/javascript&quot;&gt;
+
+&lt;/script&gt;
+</code></pre>
+</li>
+
+<li>
+<pre><code class="language-javascript">
+// Get a reference to the canvas element
+var canvas = document.querySelector('#canvas')
+
+// Create a new stage object onto which you can draw
+var stage = new createjs.Stage(canvas)
+</code></pre>
+</li>
+
+<li>
+<pre><code class="language-javascript">
+// Create a new text object
+var title = new createjs.Text('Daily activities of a Tarsier')
+
+title.x = 250
+title.y = 0
+
+title.font = 'bold 20px Arial'
+
+stage.addChild(title)
+stage.update() 
+</code></pre>
+</li>
+
+<li>
+<pre><code class="language-javascript">
+// Create a new shape object.
+var circle = new createjs.Shape()
+
+circle
+  .graphics
+  .beginFill('red')
+  .beginStroke('black')
+  .setStrokeStyle(5)
+
+circle
+  .graphics
+  .arc(100, 100, 75, 0, Math.PI * 2)
+
+stage.addChild(circle)
+stage.update()
+</code></pre>
+</li>
+
+<li>
+<pre><code class="language-javascript">
+var activities = [
+  {
+  type: 'sleeping',
+  hours: 14,
+  color: 'navy'
+  },
+  {
+  type: 'feeding',
+  hours: 6,
+  color: '#eebb66'
+  },
+  {
+  type: 'grooming',
+  hours: 4,
+  color: 'green'
+  }
+]
+</code></pre>
+</li>
+
+<li>
+<pre><code class="language-javascript">
+function getPieChartSlice(cx, cy, startAngle, endAngle, color){
+  var slice = new createjs.Shape()
+
+  // Convert degrees of an angle to radians
+  function degToRad(deg){
+  return (Math.PI / 180) * deg
+  }
+
+  slice
+    .graphics
+    .beginFill(color)
+    .moveTo(cx, cy)
+    .arc(cx, cy, 100, degToRad(startAngle), degToRad(endAngle))
+    .lineTo(cx, cy)
+
+  return slice
+}
+</code></pre>
+</li>
+
+<li>
+<pre><code class="language-javascript">
+/* Draw a pie chart from the data in the activities array */
+function drawPieChart(){
+  var lastAngle = 0
+
+  for ( var i = 0; i &lt; activities.length; i++ ){
+
+  var startAngle = lastAngle
+  var endAngle = lastAngle + 
+    (activities[i].hours / 24) * 360
+
+  lastAngle = endAngle
+
+  var slice = getPieChartSlice(100, 100, startAngle, endAngle, activities[i].color)
+    stage.addChild(slice)
+    stage.update()
+  }
+}
+
+drawPieChart()
+</code></pre>
+</li>
+
+<li>
+<pre><code class="language-javascript">
+/* Draw the chart's legend with colors and text labels.*/
+function drawLegend(){
+
+  for ( var i = 0; i &lt; activities.length; i++ ){
+
+  /* Calculate the Y position of labels. */
+  var yPos = i * 50 + 75 
+
+  var colorBox = new createjs.Shape()
+  colorBox
+    .graphics
+    .beginFill(activities[i].color)
+    
+  colorBox
+    .graphics
+    .drawRect(250, yPos, 20, 20)
+    
+  var label = new createjs.Text(activities[i].type)
+  label.font = 'bold 18px Arial'
+  label.x = 280
+  label.y = yPos
+
+  stage.addChild(label, colorBox)
+  stage.update()
+  }
+}
+
+drawLegend()
+</code></pre>
+</li>
+
+</ol>
   
   </article>
   <script type="text/javascript" src="prism/prism.js"></script>
